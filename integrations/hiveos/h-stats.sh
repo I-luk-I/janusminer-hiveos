@@ -89,7 +89,7 @@ if [ "$diffTime" -lt "$maxDelay" ]; then
                 --argjson fan "$fan_json" \
                 --argjson temp "$temp_json" \
                 --arg uptime "$uptime" \
-                '{ hs: $hs, hs_units: "mhs", algo : "wrthash", ver:$ver , $uptime, $bus_numbers, $temp, $fan, ar: ['$ac', '$rj']}')
+                '{ hs: $hs, hs_units: "mhs", algo : "JanusHash", ver:$ver , $uptime, $bus_numbers, $temp, $fan, ar: ['$ac', '$rj']}')
         khs=$total_hashrate
 else
   khs=0
