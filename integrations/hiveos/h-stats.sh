@@ -27,7 +27,9 @@ diffTime=`echo $((time_now-time_rep)) | tr -d '-'`
 
 if [ "$diffTime" -lt "$maxDelay" ]; then
         total_hashrate=`echo "$stats_raw" | awk '{print $7}'`
-	if [[ $stats_raw == *"gh/s"* ]]; then
+	if [[ $stats_raw == *"mh/s"* ]]; then
+		total_hashrate=$((`echo "scale=0; $total_hashrate * 1000 / 1" | bc -l`))
+	elif [[ $stats_raw == *"gh/s"* ]]; then
 		total_hashrate=$((`echo "scale=0; $total_hashrate * 1000000 / 1" | bc -l`))
 	fi
 
