@@ -18,7 +18,7 @@ RUN apt update && \
         python3 -m pip install meson ninja
         
 COPY . /code
-COPY thirdparty/opencl/opencl.hpp /usr/include/CL/
+RUN ln -s /usr/include/CL/cl2.hpp /usr/include/CL/opencl.hpp
 RUN mkdir /build
 WORKDIR /code
 RUN --mount=type=cache,target=/build LDFLAGS='-lpthread -static-libgcc -static-libstdc++' meson /build/code --default-library static --buildtype=release
